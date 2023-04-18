@@ -1,0 +1,97 @@
+<%- include('./partials/header')%> <%- include('./partials/navigation')%>
+
+<form
+    action="/uploadimage/<%= user._id%>"
+    method="POST"
+    enctype="multipart/form-data"
+>
+    <img
+        height="150"
+        class="preview"
+        onclick="changeImage()"
+        src="/assets/<%= user.avatar %>"
+        alt="<%= user.avatar%>"
+    />
+    <input name="oldavatar" type="hidden" value="<%= user.avatar %>" />
+    <input name="avatar" style="display: none" type="file" />
+    <button style="display: none" class="imgbutton">Upload Image</button>
+</form>
+
+<form action="/profile/<%= user._id %>" method="post">
+    <input
+        type="text"
+        placeholder="John Doe"
+        name="name"
+        value="<%= user.name%>"
+    />
+    <br />
+    <br />
+    <input
+        type="text"
+        placeholder="@johndoe"
+        name="username"
+        value="<%= user.username%>"
+    /><br />
+    <br />
+    <input
+        type="email"
+        placeholder="example@john.doe"
+        name="email"
+        value="<%= user.email%>"
+    /><br />
+    <br />
+    <input
+        type="text"
+        placeholder="where do you live ?"
+        name="city"
+        value="<%= user.city%>"
+    /><br />
+    <br />
+
+    <div class="profile-gender">
+        <input <%= user.gender === 'male' ? 'checked' : '' %> type="radio"
+        name="gender" value="male" /> Male <input <%= user.gender === 'female' ?
+        'checked' : '' %> type="radio" name="gender" value="female" /> Female
+    </div>
+
+    <br />
+    <br />
+    <input
+        type="text"
+        placeholder="write about yourself..."
+        name="about"
+        value="<%= user.about%>"
+    /><br />
+    <br />
+    <input
+        type="number"
+        placeholder="contact"
+        name="phone"
+        value="<%= user.phone%>"
+    /><br />
+    <br />
+    <button>Update Details</button>
+    <p>Have an account? <a href="/">Sign in</a></p>
+</form>
+
+<script>
+    function changeImage() {
+        var preview = document.querySelector(".preview");
+        var ImageButton = document.querySelector(".imgbutton");
+        var input = document.querySelector("input[type='file']");
+        preview.addEventListener("click", function () {
+            input.click();
+        });
+
+        input.addEventListener("change", function (e) {
+            // console.log(e.target.files[0]);
+            // console.log(input.files[0]);
+            const file = input.files[0];
+            if (file) {
+                ImageButton.style.display = "initial";
+                preview.src = URL.createObjectURL(file);
+            }
+        });
+    }
+</script>
+<%- include('./partials/footer')%>

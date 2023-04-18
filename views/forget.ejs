@@ -1,0 +1,9 @@
+<%- include('./partials/header')%> <%- include('./partials/navigation')%>
+
+<form action="/forgot-password" method="post">
+    <input type="email" placeholder="example@john.doe" name="email" />
+    <button>Send Mail</button>
+    <p>Back to <a href="/">Sign in</a></p>
+</form>
+
+<%- include('./partials/footer')%>
