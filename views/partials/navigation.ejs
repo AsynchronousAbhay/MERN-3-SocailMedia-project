@@ -1,0 +1,29 @@
+<nav>
+    <% if(isloggedin) {%>
+    <a href="/timeline">
+        <img class="nav-logo" src="/assets/logo.png" height="70" alt="logo" />
+    </a>
+    <% } else { %>
+    <a href="/">
+        <img class="nav-logo" src="/assets/logo.png" height="70" alt="logo" />
+    </a>
+    <% } %> <% if(isloggedin) {%>
+
+    <ul>
+        <li><a href="/timeline">Timeline</a></li>
+        <li><a href="/profile">Profile</a></li>
+        <li><a href="/reset-password">Reset Password</a></li>
+        <li><a href="/logout">Logout</a></li>
+        <li><a href="/delete-user">Delete Account</a></li>
+        <li>
+            <img
+                class="nav-logo"
+                src="/assets/<%= user.avatar %>"
+                height="50"
+                alt="logo"
+            />
+        </li>
+    </ul>
+
+    <% } %>
+</nav>

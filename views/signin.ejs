@@ -1,0 +1,13 @@
+<%- include('./partials/header')%> <%- include('./partials/navigation')%>
+
+<form action="/signin" method="post">
+    <input type="text" placeholder="@johndoe" name="username" />
+    <input type="password" placeholder="********" name="password" />
+    <p>
+        <a href="/forgot-password">Forgot password?</a>
+    </p>
+    <button>Sign in</button>
+    <p>Don't have an account? <a href="/signup">Sign up</a></p>
+</form>
+
+<%- include('./partials/footer')%>
